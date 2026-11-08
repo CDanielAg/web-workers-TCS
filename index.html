@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Visor de archivos CSV procesados con Web Workers">
+  <title>CSV Worker</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="#" aria-label="CSV Worker, inicio">CSV Worker</a></header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <h1 id="page-title">Explora tus datos sin bloquear la interfaz</h1>
+      <p>Carga un archivo CSV y procésalo en segundo plano con Web Workers.</p>
+    </section>
+    <section id="drop-zone" class="drop-zone" aria-labelledby="upload-title" tabindex="0">
+      <svg class="upload-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 42V10m0 0L20 22m12-12 12 12M12 38v10a6 6 0 0 0 6 6h28a6 6 0 0 0 6-6V38"/></svg>
+      <h2 id="upload-title">Arrastra tu archivo CSV aquí</h2>
+      <p>o selecciona uno desde tu equipo</p>
+      <label class="upload-button" for="csv-input">Seleccionar CSV</label>
+      <input id="csv-input" type="file" accept=".csv,text/csv" hidden>
+    </section>
+    <section id="results" class="results" aria-labelledby="results-title" hidden>
+      <div class="results-heading">
+        <div>
+          <h2 id="results-title">Datos procesados</h2>
+          <div class="file-details">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l4 4v16H6zM14 2v5h5"/></svg>
+            <strong id="file-name"></strong>
+            <span id="row-count"></span><span id="column-count"></span>
+          </div>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </div>
+      <div class="table-wrap"><table id="data-table"><thead></thead><tbody></tbody></table></div>
+    </section>
+    <p id="error" class="error" role="alert" hidden></p>
+  </main>
+  <script src="js/app.js" type="module"></script>
+</body>
+</html>
